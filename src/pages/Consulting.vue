@@ -41,9 +41,27 @@
       </div>
 
       <div class="content__statuses statuses">
-        <button v-for="status in 8" class="statuses__item" :class="status==1?'active':''">
+        <button v-for="status in 8" class="statuses__item" :class="status===1?'active':''">
           Status
         </button>
+      </div>
+
+      <div class="content__selects selects">
+        <div v-for="(select, index) in 8" class="selects__item select">
+          <checkbox class="select__checkbox" id="some-id" v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
+          <div class="select__text">
+            <p class="select__name">Remember me</p>
+            <p class="select__description">Save my login details for next time.</p>
+          </div>
+        </div>
+      </div>
+      <div class="total-price-row">
+        <div class="total-price">
+        <span class="total-price__bold">
+          Total price: $49
+        </span>
+          <span class="total-price__duration">/ month</span>
+        </div>
       </div>
     </div>
   </main>
@@ -51,6 +69,7 @@
 
 <script setup>
 import Icon from "@/components/icon.vue";
+import Checkbox from "@/components/checkbox.vue";
 </script>
 
 <style lang="scss">
@@ -321,6 +340,7 @@ import Icon from "@/components/icon.vue";
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &__item {
     border-radius: 90px;
     padding: 9.56px 12.74px;
@@ -334,6 +354,7 @@ import Icon from "@/components/icon.vue";
     display: flex;
     align-items: center;
     justify-content: center;
+
     &.active {
       color: white;
       background-color: #0250EC;
@@ -341,6 +362,48 @@ import Icon from "@/components/icon.vue";
   }
 }
 
+.selects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40.91px 50.36px;
+
+}
+
+.select {
+  display: flex;
+  gap: 12.6px;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &__text {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22.0306px;
+    line-height: 22px;
+    color: $gray-700;
+  }
+
+  &__description {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22.0306px;
+    line-height: calc(31px/22 * 100%);
+    color: $gray-500;
+  }
+
+  .total-price-row {
+    border: 1px solid black;
+  }
+}
 
 
 </style>
