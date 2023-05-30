@@ -234,7 +234,7 @@ import Checkbox from "@/components/checkbox.vue";
   }
 
   @media screen and (max-width: $tablet) {
-  max-width: 350px;
+    max-width: 350px;
     align-items: center;
     align-self: center;
   }
@@ -246,9 +246,6 @@ import Checkbox from "@/components/checkbox.vue";
 }
 
 .card {
-
-
-
   padding: viewport-calculate($notebook_start, $notebook, 31px, 16px) viewport-calculate($notebook_start, $notebook, 33px, 10px) viewport-calculate($notebook_start, $notebook, 39px, 20px) viewport-calculate($notebook_start, $notebook, 34px, 10px);
 
   color: white;
@@ -257,24 +254,24 @@ import Checkbox from "@/components/checkbox.vue";
   border-radius: 6px;
 
 
-
   @media screen and (max-width: $notebook) {
     padding: 10px;
-
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     &__hr {
       display: none;
     }
-    @media screen and (max-width: $tablet) {
-      display: flex;
-      align-items: stretch;
-      justify-content: flex-start;
-      flex-direction: column;
-      &__hr {
-        display: block;
-      }
+  }
+
+  @media screen and (max-width: $tablet) {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    &__hr {
+      display: block;
     }
   }
 
@@ -366,8 +363,6 @@ import Checkbox from "@/components/checkbox.vue";
     font-weight: 400;
     font-size: font-calculate(16px);
     line-height: calc(24 / 16 * 100%);
-
-
   }
 }
 
@@ -381,7 +376,6 @@ import Checkbox from "@/components/checkbox.vue";
   font-weight: 500;
   font-size: font-calculate(16px);
   line-height: calc(24 / 16 * 100%);
-
 
   &__check {
     flex-shrink: 0;
@@ -409,6 +403,7 @@ import Checkbox from "@/components/checkbox.vue";
   @media screen and (max-width: $phone) {
     grid-template-columns: 1fr 1fr;
   }
+
   &__item {
     border-radius: 90px;
     padding: 9.56px 12.74px;
@@ -485,13 +480,14 @@ import Checkbox from "@/components/checkbox.vue";
   @media screen and (max-width: $notebook) {
     display: flex;
     gap: 10px;
-    justify-content:space-between;
+    justify-content: space-between;
   }
   @media screen and (max-width: $tablet) {
     align-items: center;
     flex-direction: column;
     gap: 30px;
   }
+
   &__price {
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
