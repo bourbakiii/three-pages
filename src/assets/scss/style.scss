@@ -44,6 +44,7 @@ $basic_side_padding: 20px;
 
 body {
   font-family: "Inter", sans-serif;
+  min-width: 320px;
 }
 
 
@@ -61,7 +62,9 @@ body {
   @return $final_value;
 }
 
-
+@function font-calculate($fontsize, $coefficient: 1.7) {
+  @return viewport-calculate($notebook_start, $fontsize, $fontsize, $fontsize/$coefficient);
+}
 .main-title {
   position: absolute;
   width: 308px;
@@ -72,7 +75,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 50.6826px;
+  font-size: font-calculate(50.6826px);
   line-height: 60px;
   letter-spacing: -1.94933px;
   color: $main-title-color;
@@ -82,7 +85,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 60px;
+  font-size: font-calculate(60px);
   line-height: 66px;
   color: $grey-title;
 }
@@ -92,8 +95,11 @@ body {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: font-calculate(18px);
   line-height: 156%;
   color: $small-text-color;
 
 }
+
+
+

@@ -18,15 +18,17 @@
 
       <div class="cards">
         <div class="cards__item card" v-for="item in 3">
-          <span class="card__type">Personal</span>
-          <span class="card__price-row">
+          <div class="card__content">
+            <span class="card__type">Personal</span>
+            <span class="card__price-row">
               <span class="card__price">
                 $19
               </span>
               <span class="card__price-duration">/ month</span>
             </span>
-          <p class="card__description">All the basic features to boost your freelance career</p>
-          <hr/>
+            <p class="card__description">All the basic features to boost your freelance career</p>
+          </div>
+          <hr class="card_hr"/>
           <div class="card__options">
             <div class="option" v-for="option in 5">
               <icon class="option__check" name="card-check"/>
@@ -48,7 +50,8 @@
 
       <div class="content__selects selects">
         <div v-for="(select, index) in 8" class="selects__item select">
-          <checkbox class="select__checkbox" id="some-id" v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
+          <checkbox class="select__checkbox" :id="`some-id-${index}`"
+                    v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
           <div class="select__text">
             <p class="select__name">Remember me</p>
             <p class="select__description">Save my login details for next time.</p>
@@ -86,12 +89,12 @@ import Checkbox from "@/components/checkbox.vue";
   width: 100%;
   max-width: calc($page-maxwidth + $basic_side_padding * 2);
   margin-top: 173px;
-  border: 1px solid black;
   padding: 0 $basic_side_padding;
 
   &__title {
     text-transform: uppercase;
-    margin-bottom: 114px;
+    margin-bottom: 0 auto 114px;
+    text-align: center;
   }
 }
 
@@ -101,8 +104,10 @@ import Checkbox from "@/components/checkbox.vue";
   justify-content: flex-start;
   flex-direction: column;
   width: 100%;
+  margin-top: viewport-calculate($notebook_start, $phone, 32px, 20px);
 
   &__title {
+    margin-bottom: viewport-calculate($notebook_start, $phone, 20px, 15px);
     text-align: center;
   }
 }
@@ -112,6 +117,8 @@ import Checkbox from "@/components/checkbox.vue";
   border-radius: 60px;
   background-color: #A5F4FF;
   position: relative;
+
+  margin-top: viewport-calculate($notebook_start, $phone, 100px, 50px);
 
   &__indicator {
     height: 15.76px;
@@ -199,8 +206,8 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 13px;
-    line-height: 21px;
+    font-size: font-calculate(13px);
+    line-height: calc(21 / 13 * 100%);
     border-radius: 5px;
     color: white;
 
@@ -219,9 +226,19 @@ import Checkbox from "@/components/checkbox.vue";
 }
 
 .cards {
-  margin-top: 63px;
+  margin-top: viewport-calculate($notebook_start, $phone, 63px, 40px);
   display: flex;
-  gap: 30px;
+  gap: viewport-calculate($notebook_start, $notebook_start, 30px, 10px);
+  @media screen and (max-width: $notebook) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: $tablet) {
+  max-width: 350px;
+    align-items: center;
+    align-self: center;
+  }
+
 
   &__item {
     background: rgba(120, 146, 251, 0.86);
@@ -229,23 +246,45 @@ import Checkbox from "@/components/checkbox.vue";
 }
 
 .card {
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 31px 33px 39px 34px;
+
+
+
+  padding: viewport-calculate($notebook_start, $notebook, 31px, 16px) viewport-calculate($notebook_start, $notebook, 33px, 10px) viewport-calculate($notebook_start, $notebook, 39px, 20px) viewport-calculate($notebook_start, $notebook, 34px, 10px);
+
   color: white;
   flex-grow: 1;
   flex-shrink: 0;
+  border-radius: 6px;
+
+
+
+  @media screen and (max-width: $notebook) {
+    padding: 10px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    &__hr {
+      display: none;
+    }
+    @media screen and (max-width: $tablet) {
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      flex-direction: column;
+      &__hr {
+        display: block;
+      }
+    }
+  }
 
   &__type {
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 30px;
+    font-size: font-calculate(18px);
+    line-height: calc(30 / 18 * 100%);
   }
-
 
   &__price-row {
     display: flex;
@@ -257,16 +296,16 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 60px;
-    line-height: 66px;
+    font-size: font-calculate(60px);
+    line-height: calc(66 / 60 * 100%);
   }
 
   &__price-duration {
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: font-calculate(16px);
+    line-height: calc(24 / 16 * 100%);
     color: #00EEEE;
   }
 
@@ -274,8 +313,9 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: font-calculate(16px);
+    line-height: calc(24 / 16 * 100%);
+
     width: 100%;
     max-width: 259px;
     margin-bottom: 31px;
@@ -288,6 +328,13 @@ import Checkbox from "@/components/checkbox.vue";
     flex-direction: column;
     margin-top: 30px;
     gap: 20px;
+    @media screen and (max-width: $notebook) {
+      gap: 10px;
+      margin-top: 0;
+    }
+    @media screen and (max-width: $tablet) {
+      margin-top: 15px !important;
+    }
   }
 
   &__button {
@@ -300,22 +347,28 @@ import Checkbox from "@/components/checkbox.vue";
       align-items: center;
       justify-content: center;
       margin-top: 36px;
+      @media screen and (max-width: $notebook) {
+        margin: 0;
+      }
+      @media screen and (max-width: $tablet) {
+        margin-top: 15px;
+      }
 
     }
 
     background: rgba(120, 146, 251, 0.86);
-
+    padding: 0 30px;
     width: 100%;
     height: 100%;
     border-radius: 42px;
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: font-calculate(16px);
+    line-height: calc(24 / 16 * 100%);
+
 
   }
-
 }
 
 .option {
@@ -326,8 +379,9 @@ import Checkbox from "@/components/checkbox.vue";
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: font-calculate(16px);
+  line-height: calc(24 / 16 * 100%);
+
 
   &__check {
     flex-shrink: 0;
@@ -345,14 +399,23 @@ import Checkbox from "@/components/checkbox.vue";
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  margin-top: viewport-calculate($notebook_start, $phone, 109px, 50px);
+  margin-bottom: viewport-calculate($notebook_start, $phone, 70px, 50px);
+  @media screen and (max-width: $tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  @media screen and (max-width: $phone) {
+    grid-template-columns: 1fr 1fr;
+  }
   &__item {
     border-radius: 90px;
     padding: 9.56px 12.74px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 22.3014px;
+    font-size: font-calculate(22.3014px);
     line-height: 100%;
     background-color: #E8F1FF;
     color: #0250EC;
@@ -370,8 +433,11 @@ import Checkbox from "@/components/checkbox.vue";
 .selects {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px 50px;
-
+  gap: viewport-calculate($notebook_start, $phone, 40px, 20px) viewport-calculate($notebook_start, $phone, 50px, 25px);
+  @media screen and (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .select {
@@ -391,8 +457,9 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 22.0306px;
-    line-height: 22px;
+    font-size: font-calculate(22px);
+    line-height: 100%;
+
     color: $gray-700;
   }
 
@@ -400,7 +467,7 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 22.0306px;
+    font-size: font-calculate(22px);
     line-height: calc(31 / 22 * 100%);
     color: $gray-500;
   }
@@ -410,18 +477,28 @@ import Checkbox from "@/components/checkbox.vue";
 
 
 .total-price {
-  border: 1px solid black;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
   align-items: flex-end;
-
+  margin-top: viewport-calculate($notebook_start, $phone, 86px, 40px);
+  @media screen and (max-width: $notebook) {
+    display: flex;
+    gap: 10px;
+    justify-content:space-between;
+  }
+  @media screen and (max-width: $tablet) {
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+  }
   &__price {
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 60px;
-    line-height: 66px;
+    font-size: font-calculate(60px, 2.3);
+    line-height: calc(66 / 60 * 100%);
+
     color: #414141;
   }
 
@@ -429,8 +506,9 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'IBM Plex Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: font-calculate(16px);
+    line-height: calc(24 / 16 * 100%);
+
     color: #909090;
   }
 
@@ -444,9 +522,11 @@ import Checkbox from "@/components/checkbox.vue";
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 23.8252px;
-    line-height: 29px;
+    font-size: font-calculate(23.8252px);
+    line-height: calc(29 / 23.8 * 100%);
+
     color: white;
+
   }
 }
 

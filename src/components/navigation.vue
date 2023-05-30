@@ -32,7 +32,7 @@ import Icon from "@/components/icon.vue";
   border: 1px solid black;
   width: 100%;
   max-width: 1262px;
-  height: 50px;
+  height: max-content;
   background-color: rgba(100, 0, 0, .2);
   color: $nav-purple;
 
@@ -41,11 +41,15 @@ import Icon from "@/components/icon.vue";
     align-items: center;
     justify-content: center;
     border: 1px solid black;
+    width: 100%;
+    padding: 0 $basic_side_padding;
+
   }
 
   &__logo {
     width: 83px;
     height: 48px;
+    flex-shrink: 0;
   }
 
   &__links {
@@ -54,11 +58,22 @@ import Icon from "@/components/icon.vue";
     justify-content: flex-end;
     gap: viewport-calculate($notebook_start, $tablet, 40px, 15px);
     width: max-content;
+    @media screen and (max-width: $notebook) {
+      display: grid;
+      gap: 10px 13px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 
   &__link {
     color: inherit;
     text-decoration: none;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: font-calculate(22px);
+    line-height: calc(27 / 22 * 100%);
 
     &:hover {
       text-decoration: underline;
