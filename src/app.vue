@@ -6,20 +6,23 @@
         <component :key="$route.path" class="page" :is="Component"/>
       </transition>
     </router-view>
+    <Footer class="layout__footer"/>
   </div>
 </template>
 
 <script setup>
 import Navigation from "@/components/navigation.vue";
+import Footer from "@/components/Footer.vue";
 </script>
 <style lang="scss">
 .layout {
-  width:100%;
+  width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+
   &__navigation {
     padding: 55px $basic_side_padding;
   }
