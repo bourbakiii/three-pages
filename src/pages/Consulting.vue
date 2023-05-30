@@ -55,13 +55,18 @@
           </div>
         </div>
       </div>
-      <div class="total-price-row">
-        <div class="total-price">
+      <div class="total-price">
+        <div class="total-price__price">
         <span class="total-price__bold">
           Total price: $49
         </span>
           <span class="total-price__duration">/ month</span>
         </div>
+        <button class="total-price__button">
+
+          Заказать
+
+        </button>
       </div>
     </div>
   </main>
@@ -365,7 +370,7 @@ import Checkbox from "@/components/checkbox.vue";
 .selects {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40.91px 50.36px;
+  gap: 40px 50px;
 
 }
 
@@ -396,12 +401,52 @@ import Checkbox from "@/components/checkbox.vue";
     font-style: normal;
     font-weight: 400;
     font-size: 22.0306px;
-    line-height: calc(31px/22 * 100%);
+    line-height: calc(31 / 22 * 100%);
     color: $gray-500;
   }
 
-  .total-price-row {
-    border: 1px solid black;
+
+}
+
+
+.total-price {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: flex-end;
+
+  &__price {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 66px;
+    color: #414141;
+  }
+
+  &__duration {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #909090;
+  }
+
+  &__button {
+    background: radial-gradient(98.52% 170.5% at 1.48% -21.11%, #9303EB 0%, #4C0083 100%);
+    border-radius: 56.314px;
+    height: 48.73px;
+    padding: 0 52px;
+    width: max-content;
+    margin: auto 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23.8252px;
+    line-height: 29px;
+    color: white;
   }
 }
 
