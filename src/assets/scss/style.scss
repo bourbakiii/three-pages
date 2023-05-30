@@ -1,0 +1,92 @@
+@use 'sass:math';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+
+$nav-purple: #9003E7;
+$main-title-color: #090914;
+$grey-title: #464646;
+$small-text-color: #A1A1AA;
+$gray-700: #3F3F46;
+$gray-800: #27272A;
+////////////////////////////////////
+$page-maxwidth: 1137px;
+
+$notebook_start: 1440px;
+$maxwidth: 1270px;
+$notebook: 1024px;
+$tablet: 768px;
+$phone_start: 576px;
+$phone: 425px;
+$phone_end: 320px;
+////////////////////////////////////
+
+$basic_side_padding: 20px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+
+@function strip-units($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+@function viewport-calculate($start, $end, $max, $min) {
+  $percent_of_width: calc((100vw - $end) / strip-units($start - $end));
+
+  $one_percent_of_values: calc(($max - $min) / 100);
+
+  $final_value: max(min(calc(($percent_of_width * strip-units($one_percent_of_values)) * 100 + $min), $max), $min);
+
+  @return $final_value;
+}
+
+
+.main-title {
+  position: absolute;
+  width: 308px;
+  height: 61px;
+  left: calc(50% - 308px / 2 - 8px);
+  top: 276px;
+
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50.6826px;
+  line-height: 60px;
+  letter-spacing: -1.94933px;
+  color: $main-title-color;
+}
+
+.big-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 66px;
+  color: $grey-title;
+}
+
+.small-after-title-text {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 156%;
+  color: $small-text-color;
+
+}
