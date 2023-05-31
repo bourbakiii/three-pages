@@ -15,6 +15,9 @@
 import Navigation from "@/components/navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Questions from "@/components/Questions.vue";
+import {onMounted} from "vue";
+import {gsap} from "gsap";
+
 </script>
 <style lang="scss">
 .layout {

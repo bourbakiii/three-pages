@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="cards">
+      <div class="cards anim-fadeinup">
         <div class="cards__item card" v-for="item in 3">
           <div class="card__content">
             <span class="card__type">Personal</span>
@@ -48,7 +48,7 @@
         </button>
       </div>
 
-      <div class="content__selects selects">
+      <div class="content__selects selects anim-fadeinup">
         <div v-for="(select, index) in 8" class="selects__item select">
           <checkbox class="select__checkbox" :id="`some-id-${index}`"
                     v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <div class="total-price">
+      <div class="total-price anim-fadeinup">
         <div class="total-price__price">
         <span class="total-price__bold">
           Total price: $49
@@ -78,6 +78,34 @@
 <script setup>
 import Icon from "@/components/icon.vue";
 import Checkbox from "@/components/checkbox.vue";
+import {onMounted} from "vue";
+import {gsap} from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+onMounted(() => {
+  console.log('all-', document.querySelectorAll(".anim-fadeinup").length);
+  document.querySelectorAll(".anim-fadeinup").forEach(function (element, index) {
+    console.log(index);
+    let tl_FadeInUp = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        // start: "top bottom",      start: "top bottom",
+        markers: false,
+      },
+    });
+    tl_FadeInUp.from(element,
+        {
+          duration: 1,
+          autoAlpha: 0, x: (index % 2 == 0) ? 100 : -100,
+          ease: Expo.easeOut, clearProps: "all",
+        }    // "+=0.3"
+    );
+  });
+  console.log('App mounted');
+})
+
 </script>
 
 <style lang="scss">
