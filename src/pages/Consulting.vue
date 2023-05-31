@@ -1,14 +1,14 @@
 <template>
   <main class="page consulting-page">
-    <h1 class="consulting-page__title main-title">
+    <h1 class="consulting-page__title main-title anim-side" side="right">
       CONSULTING
     </h1>
     <div class="consulting-page__content content">
-      <h2 class="content__title big-title">Simple, easy pricing</h2>
-      <span class="content__small-text small-after-title-text"> Amet minim mollit non deserunt  ullamco.
+      <h2 class="content__title big-title anim-side" side="left">Simple, easy pricing</h2>
+      <span class="content__small-text small-after-title-text anim-side" side="right"> Amet minim mollit non deserunt  ullamco.
         </span>
 
-      <div class="progress-bar">
+      <div class="progress-bar anim-up">
         <span v-for="item in 6" class="progress-bar__indicator"/>
         <div class="progress-bar__coating">
           <div class="progress-bar__circle"></div>
@@ -16,8 +16,9 @@
         </div>
       </div>
 
-      <div class="cards anim-fadeinup">
-        <div class="cards__item card" v-for="item in 3">
+      <div class="cards">
+        <div class="cards__item card" :class="item===1||item===3?'anim-side':'anim-up'" :side="item===1?'left':'right'"
+             v-for="item in 3">
           <div class="card__content">
             <span class="card__type">Personal</span>
             <span class="card__price-row">
@@ -43,12 +44,12 @@
       </div>
 
       <div class="content__statuses statuses">
-        <button v-for="status in 8" class="statuses__item" :class="status===1?'active':''">
+        <button v-for="status in 8" class="statuses__item anim-up" :class="status===1?'active':''">
           Status
         </button>
       </div>
 
-      <div class="content__selects selects anim-fadeinup">
+      <div class="content__selects selects anim-side" side="right">
         <div v-for="(select, index) in 8" class="selects__item select">
           <checkbox class="select__checkbox" :id="`some-id-${index}`"
                     v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
@@ -58,7 +59,7 @@
           </div>
         </div>
       </div>
-      <div class="total-price anim-fadeinup">
+      <div class="total-price anim-side" side="left">
         <div class="total-price__price">
         <span class="total-price__bold">
           Total price: $49
@@ -85,9 +86,9 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  console.log('all-', document.querySelectorAll(".anim-fadeinup").length);
-  document.querySelectorAll(".anim-fadeinup").forEach(function (element, index) {
-    console.log(index);
+  document.querySelectorAll(".consulting-page .anim-side").forEach(function (element, index) {
+    const side = element.getAttribute('side') || null;
+    console.log('side,', side);
     let tl_FadeInUp = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -98,12 +99,27 @@ onMounted(() => {
     tl_FadeInUp.from(element,
         {
           duration: 1,
-          autoAlpha: 0, x: (index % 2 == 0) ? 100 : -100,
+          autoAlpha: 0, x: side === 'right' ? 100 : side === 'left' ? -100 : 0,
           ease: Expo.easeOut, clearProps: "all",
         }    // "+=0.3"
     );
   });
-  console.log('App mounted');
+  document.querySelectorAll(".consulting-page .anim-up").forEach(function (element, index) {
+    let tl_FadeInUp = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        // start: "top bottom",      start: "top bottom",
+        markers: false,
+      },
+    });
+    tl_FadeInUp.from(element,
+        {
+          duration: 1,
+          autoAlpha: 0, y: 100,
+          ease: Expo.easeOut, clearProps: "all",
+        }    // "+=0.3"
+    );
+  });
 })
 
 </script>

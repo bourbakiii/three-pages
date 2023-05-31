@@ -1,11 +1,11 @@
 <template>
-  <div class="questions">
+  <div class="questions anim-scale">
     <small class="questions__pre">
       FAQ
     </small>
     <h3 class="questions__title">Answers to our frequently asked questions</h3>
     <div class="questions__content">
-      <div v-for="(question,index) in questions" class="question" :class="{opened: question.is_opened}">
+      <div v-for="(question,index) in questions" class="question anim-up" :class="{opened: question.is_opened}">
         <button @click.prevent="question.is_opened = !question.is_opened" class="question__button">
           {{ question.title }}
           <icon class="question__arrow" name="question-arrow"/>
@@ -20,7 +20,8 @@
 
 <script setup>
 import Icon from "@/components/Icon.vue";
-import {reactive} from "vue";
+import {onMounted, reactive} from "vue";
+import {gsap} from "gsap";
 
 const questions = reactive([
   {
@@ -49,6 +50,28 @@ const questions = reactive([
     is_opened: false
   }
 ]);
+
+onMounted(() => {
+  setTimeout(
+      () =>
+          document.querySelectorAll(".questions .anim-up").forEach(function (element, index) {
+            let tl_FadeInUp = gsap.timeline({
+              scrollTrigger: {
+                trigger: element,
+                // start: "top bottom",      start: "top bottom",
+                markers: false,
+              },
+            });
+            tl_FadeInUp.from(element,
+                {
+                  duration: 1,
+                  autoAlpha: 0, y: 100,
+                  ease: Expo.easeOut, clearProps: "all",
+                }    // "+=0.3"
+            )
+          }), 300
+  )
+});
 </script>
 
 <style lang="scss">
@@ -100,13 +123,15 @@ const questions = reactive([
   justify-content: flex-start;
   flex-direction: column;
 
-  &.opened &{
+  &.opened & {
     &__content {
-    display: block;
+      display: block;
     }
-    &__arrow{
+
+    &__arrow {
       transform: rotate(90deg);
-  }}
+    }
+  }
 
   &__button {
     font-family: 'IBM Plex Sans', sans-serif;

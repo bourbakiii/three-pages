@@ -15,9 +15,6 @@
 import Navigation from "@/components/navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Questions from "@/components/Questions.vue";
-import {onMounted} from "vue";
-import {gsap} from "gsap";
-
 </script>
 <style lang="scss">
 .layout {
@@ -30,6 +27,9 @@ import {gsap} from "gsap";
 
   &__navigation {
     padding: 55px $basic_side_padding;
+    position:sticky;
+    top:0;
+    z-index: 100;
   }
 
   &__questions {

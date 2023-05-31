@@ -43,6 +43,7 @@ import Icon from "@/components/icon.vue";
     border: 1px solid black;
     width: 100%;
     padding: 0 $basic_side_padding;
+    background-color: white;
 
   }
 
