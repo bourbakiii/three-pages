@@ -6,10 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-src/assets
-src/components
-src/index.js
-src/app.vue
 node_modules
 dist
 dist-ssr
