@@ -6,7 +6,6 @@
         <component :key="$route.path" class="page" :is="Component"/>
       </transition>
     </router-view>
-    <Questions class="layout__questions"/>
     <Footer class="layout__footer"/>
   </div>
 </template>
@@ -14,7 +13,6 @@
 <script setup>
 import Navigation from "@/components/navigation.vue";
 import Footer from "@/components/Footer.vue";
-import Questions from "@/components/Questions.vue";
 </script>
 <style lang="scss">
 .layout {
@@ -26,15 +24,13 @@ import Questions from "@/components/Questions.vue";
   flex-direction: column;
 
   &__navigation {
-    padding: 55px $basic_side_padding;
     position:sticky;
     top:0;
     z-index: 100;
+    margin-top: 32px;
   }
 
-  &__questions {
-    margin: viewport-calculate($notebook_start, $phone, 87px, 55px) 0 0;
-  }
+
 }
 
 

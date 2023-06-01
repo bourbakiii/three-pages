@@ -1,84 +1,89 @@
 <template>
   <main class="page consulting-page">
-    <h1 class="consulting-page__title main-title anim-side" side="right">
-      CONSULTING
-    </h1>
-    <div class="consulting-page__content content">
-      <h2 class="content__title big-title anim-side" side="left">Simple, easy pricing</h2>
-      <span class="content__small-text small-after-title-text anim-side" side="right"> Amet minim mollit non deserunt  ullamco.
+    <div class="consulting-page__content">
+      <h1 class="consulting-page__title main-title anim-side" side="right">
+        CONSULTING
+      </h1>
+      <div class="consulting-page__content content">
+        <h2 class="content__title big-title anim-side" side="left">Simple, easy pricing</h2>
+        <span class="content__small-text small-after-title-text anim-side" side="right"> Amet minim mollit non deserunt  ullamco.
         </span>
 
-      <div class="progress-bar anim-up">
-        <span v-for="item in 6" class="progress-bar__indicator"/>
-        <div class="progress-bar__coating">
-          <div class="progress-bar__circle"></div>
-          <div class="progress-bar__count">100 users</div>
+        <div class="progress-bar anim-up">
+          <span v-for="item in 6" class="progress-bar__indicator"/>
+          <div class="progress-bar__coating">
+            <div class="progress-bar__circle"></div>
+            <div class="progress-bar__count">100 users</div>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="cards__item card" :class="item===1||item===3?'anim-side':'anim-up'" :side="item===1?'left':'right'"
-             v-for="item in 3">
-          <div class="card__content">
-            <span class="card__type">Personal</span>
-            <span class="card__price-row">
+        <div class="cards">
+          <div class="cards__item card" :class="item===1||item===3?'anim-side':'anim-up'"
+               :side="item===1?'left':'right'"
+               v-for="item in 3">
+            <div class="card__content">
+              <span class="card__type">Personal</span>
+              <span class="card__price-row">
               <span class="card__price">
                 $19
               </span>
               <span class="card__price-duration">/ month</span>
             </span>
-            <p class="card__description">All the basic features to boost your freelance career</p>
-          </div>
-          <hr class="card_hr"/>
-          <div class="card__options">
-            <div class="option" v-for="option in 5">
-              <icon class="option__check" name="card-check"/>
-              <p class="option__text">Full Access to Landingfolio</p>
-              <icon class="option__mark" name="card-mark"/>
+              <p class="card__description">All the basic features to boost your freelance career</p>
+            </div>
+            <hr class="card_hr"/>
+            <div class="card__options">
+              <div class="option" v-for="option in 5">
+                <icon class="option__check" name="card-check"/>
+                <p class="option__text">Full Access to Landingfolio</p>
+                <icon class="option__mark" name="card-mark"/>
+              </div>
+            </div>
+            <div class="card__button-wrapper">
+              <button class="card__button">Get 14 Days Free Trial</button>
             </div>
           </div>
-          <div class="card__button-wrapper">
-            <button class="card__button">Get 14 Days Free Trial</button>
+        </div>
+
+        <div class="content__statuses statuses">
+          <button v-for="status in 8" class="statuses__item anim-up" :class="status===1?'active':''">
+            Status
+          </button>
+        </div>
+
+        <div class="content__selects selects anim-side" side="right">
+          <div v-for="(select, index) in 8" class="selects__item select">
+            <checkbox class="select__checkbox" :id="`some-id-${index}`"
+                      v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
+            <div class="select__text">
+              <p class="select__name">Remember me</p>
+              <p class="select__description">Save my login details for next time.</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="content__statuses statuses">
-        <button v-for="status in 8" class="statuses__item anim-up" :class="status===1?'active':''">
-          Status
-        </button>
-      </div>
-
-      <div class="content__selects selects anim-side" side="right">
-        <div v-for="(select, index) in 8" class="selects__item select">
-          <checkbox class="select__checkbox" :id="`some-id-${index}`"
-                    v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
-          <div class="select__text">
-            <p class="select__name">Remember me</p>
-            <p class="select__description">Save my login details for next time.</p>
-          </div>
-        </div>
-      </div>
-      <div class="total-price anim-side" side="left">
-        <div class="total-price__price">
+        <div class="total-price anim-side" side="left">
+          <div class="total-price__price">
         <span class="total-price__bold">
           Total price: $49
         </span>
-          <span class="total-price__duration">/ month</span>
+            <span class="total-price__duration">/ month</span>
+          </div>
+          <button class="total-price__button">
+
+            Заказать
+
+          </button>
         </div>
-        <button class="total-price__button">
-
-          Заказать
-
-        </button>
       </div>
     </div>
+    <Questions class="consulting-page__questions page__questions"/>
   </main>
 </template>
 
 <script setup>
 import Icon from "@/components/icon.vue";
 import Checkbox from "@/components/checkbox.vue";
+import Questions from "@/components/Questions.vue";
 import {onMounted} from "vue";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -104,7 +109,7 @@ onMounted(() => {
         }    // "+=0.3"
     );
   });
-  document.querySelectorAll(".consulting-page .anim-up").forEach(function (element, index) {
+  document.querySelectorAll(".consulting-page__content .anim-up").forEach(function (element, index) {
     let tl_FadeInUp = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -115,7 +120,7 @@ onMounted(() => {
     tl_FadeInUp.from(element,
         {
           duration: 1,
-          autoAlpha: 0, y: 100,
+          autoAlpha: 0, y: window.screen.height / 10,
           ease: Expo.easeOut, clearProps: "all",
         }    // "+=0.3"
     );
@@ -127,18 +132,31 @@ onMounted(() => {
 <style lang="scss">
 .consulting-page {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  width: 100%;
-  max-width: calc($page-maxwidth + $basic_side_padding * 2);
   margin-top: 173px;
-  padding: 0 $basic_side_padding;
+  width:100%;
+
+  &__content {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 $basic_side_padding;
+    max-width: calc($page-maxwidth + $basic_side_padding * 2);
+  }
 
   &__title {
     text-transform: uppercase;
     margin-bottom: 0 auto 114px;
     text-align: center;
+  }
+
+  &__questions {
+    width:100%;
+    margin: viewport-calculate($notebook_start, $phone, 87px, 55px) 0 0;
   }
 }
 

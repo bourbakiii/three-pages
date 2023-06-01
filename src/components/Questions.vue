@@ -1,17 +1,19 @@
 <template>
-  <div class="questions anim-scale">
-    <small class="questions__pre">
-      FAQ
-    </small>
-    <h3 class="questions__title">Answers to our frequently asked questions</h3>
-    <div class="questions__content">
-      <div v-for="(question,index) in questions" class="question anim-up" :class="{opened: question.is_opened}">
-        <button @click.prevent="question.is_opened = !question.is_opened" class="question__button">
-          {{ question.title }}
-          <icon class="question__arrow" name="question-arrow"/>
-        </button>
-        <div class="question__content">
-          {{ question.text }}
+  <div class="questions-wrapper anim-scale">
+    <div class="questions">
+      <small class="questions__pre">
+        FAQ
+      </small>
+      <h3 class="questions__title">Answers to our frequently asked questions</h3>
+      <div class="questions__content">
+        <div v-for="(question,index) in questions" class="question anim-up" :class="{opened: question.is_opened}">
+          <button @click.prevent="question.is_opened = !question.is_opened" class="question__button">
+            {{ question.title }}
+            <icon class="question__arrow" name="question-arrow"/>
+          </button>
+          <div class="question__content">
+            {{ question.text }}
+          </div>
         </div>
       </div>
     </div>
@@ -52,26 +54,24 @@ const questions = reactive([
 ]);
 
 onMounted(() => {
-  setTimeout(
-      () =>
-          document.querySelectorAll(".questions .anim-up").forEach(function (element, index) {
-            let tl_FadeInUp = gsap.timeline({
-              scrollTrigger: {
-                trigger: element,
-                // start: "top bottom",      start: "top bottom",
-                markers: false,
-              },
-            });
-            tl_FadeInUp.from(element,
-                {
-                  duration: 1,
-                  autoAlpha: 0, y: 100,
-                  ease: Expo.easeOut, clearProps: "all",
-                }    // "+=0.3"
-            )
-          }), 300
-  )
+  document.querySelectorAll(".questions-wrapper .anim-up").forEach(function (element, index) {
+    let tl_FadeInUp = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        // start: "top bottom",      start: "top bottom",
+        markers: false,
+      },
+    });
+    tl_FadeInUp.from(element,
+        {
+          duration: 1,
+          autoAlpha: 0, y: window.screen.height / 10,
+          ease: Expo.easeOut, clearProps: "all",
+        }    // "+=0.3"
+    );
+  });
 });
+
 </script>
 
 <style lang="scss">
@@ -80,10 +80,19 @@ onMounted(() => {
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  padding: viewport-calculate($notebook_start, $phone_start, 128px, 30px) viewport-calculate($notebook_start, $phone_start, 272px, 30px) viewport-calculate($notebook_start, $phone_start, 171px, 80px);
+  max-width: $page-maxwidth;
   width: 100%;
-  background: #060F51;
-  color: white;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: viewport-calculate($notebook_start, $phone_start, 128px, 30px) viewport-calculate($notebook_start, $phone_start, 272px, 30px) viewport-calculate($notebook_start, $phone_start, 171px, 80px);
+    color: white;
+    background: #060F51;
+    width: 100%;
+
+  }
 
   &__pre {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -122,7 +131,10 @@ onMounted(() => {
   align-items: stretch;
   justify-content: flex-start;
   flex-direction: column;
-
+  &:last-of-type &__content{
+    padding-bottom: 0;
+    background-color: green;
+  }
   &.opened & {
     &__content {
       display: block;
