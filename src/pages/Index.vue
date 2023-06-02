@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
                                 <div class="bg-gray-100 border-t rounded-b-xl p-[32px]">
-                                    <a class='block w-full bg-[#7F56D9] text-white text-center py-[12px] rounded-md text-lg'>Заказать</a>
+                                    <router-link  :to="s.path" class='block w-full bg-[#7F56D9] text-white text-center py-[12px] rounded-md text-lg'>Заказать</router-link>
                                 </div>
                             </div>
                         </div>

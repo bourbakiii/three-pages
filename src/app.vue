@@ -2,9 +2,9 @@
   <div class="layout">
     <Navigation class="layout__navigation"/>
     <router-view v-slot="{ Component, route }">
-      <transition name="opacity-transition" mode="out-in">
+<!--      <transition name="opacity-transition" mode="out-in">-->
         <component :key="$route.path" class="page" :is="Component"/>
-      </transition>
+<!--      </transition>-->
     </router-view>
     <Footer class="layout__footer"/>
   </div>

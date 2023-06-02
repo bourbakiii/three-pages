@@ -33,8 +33,13 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
     linkActiveClass: 'active',
-    linkExactActiveClass: 'active-exact'
+    linkExactActiveClass: 'active-exact',
+    scrollBehavior(to, from, savedPosition) {
+        // always scroll to top
+        return { top: 0 }
+    },
 });
+
 
 
 export default router;
