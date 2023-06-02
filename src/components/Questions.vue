@@ -133,7 +133,6 @@ onMounted(() => {
   flex-direction: column;
   &:last-of-type &__content{
     padding-bottom: 0;
-    background-color: green;
   }
   &.opened & {
     &__content {

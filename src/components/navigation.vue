@@ -25,7 +25,7 @@ import Icon from "@/components/icon.vue";
 
 const links = [{
     name: 'Главная',
-    to: '#',
+    to: '/',
 },
     {
         name: 'О нас',

@@ -12,7 +12,19 @@ export const routes = [
         path: '/consulting',
         name: 'Consulting',
         title: 'Consulting',
-        component: () => import("@/pages/Consulting.vue")
+        component: () => import("@/pages/Three.vue")
+    },
+    {
+        path: '/smm',
+        name: 'SMM',
+        title: 'SMM',
+        component: () => import("@/pages/Three.vue")
+    },
+    {
+        path: '/develope',
+        name: 'Develope',
+        title: 'Develope',
+        component: () => import("@/pages/Three.vue")
     },
 ]
 

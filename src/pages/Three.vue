@@ -1,12 +1,12 @@
 <template>
-  <main class="page consulting-page">
-    <div class="consulting-page__content">
-      <h1 class="consulting-page__title h1-title anim-side" side="right">
-        CONSULTING
+  <main class="page three-page">
+    <div class="three-page__content">
+      <h1 class="three-page__title h1-title anim-up" side="right">
+        {{$route.name}}
       </h1>
-      <div class="consulting-page__content content">
-        <h2 class="content__title big-title anim-side" side="left">Simple, easy pricing</h2>
-        <span class="content__small-text small-after-title-text anim-side" side="right"> Amet minim mollit non deserunt  ullamco.
+      <div class="three-page__content content">
+        <h2 class="content__title big-title anim-up" side="left">Simple, easy pricing</h2>
+        <span class="content__small-text small-after-title-text anim-up" side="right"> Amet minim mollit non deserunt  ullamco.
         </span>
 
         <div class="progress-bar anim-up">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="cards">
-          <div class="cards__item card" :class="item===1||item===3?'anim-side':'anim-up'"
+          <div class="cards__item card" :class="item===1||item===3?'anim-up':'anim-up'"
                :side="item===1?'left':'right'"
                v-for="item in 3">
             <div class="card__content">
@@ -51,7 +51,7 @@
           </button>
         </div>
 
-        <div class="content__selects selects anim-side" side="right">
+        <div class="content__selects selects anim-up" side="right">
           <div v-for="(select, index) in 8" class="selects__item select">
             <checkbox class="select__checkbox" :id="`some-id-${index}`"
                       v-bind="{'checked': index%2===1, 'disabled': index>=6}"/>
@@ -61,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="total-price anim-side" side="left">
+        <div class="total-price anim-up" side="left">
           <div class="total-price__price">
         <span class="total-price__bold">
           Total price: $49
@@ -69,14 +69,12 @@
             <span class="total-price__duration">/ month</span>
           </div>
           <button class="total-price__button">
-
             Заказать
-
           </button>
         </div>
       </div>
     </div>
-    <Questions class="consulting-page__questions page__questions"/>
+    <Questions class="three-page__questions page__questions"/>
   </main>
 </template>
 
@@ -91,24 +89,24 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  document.querySelectorAll(".consulting-page .anim-side").forEach(function (element, index) {
-    const side = element.getAttribute('side') || null;
-    let tl_FadeInUp = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-        // start: "top bottom",      start: "top bottom",
-        markers: false,
-      },
-    });
-    tl_FadeInUp.from(element,
-        {
-          duration: 1,
-          autoAlpha: 0, x: side === 'right' ? 100 : side === 'left' ? -100 : 0,
-          ease: Expo.easeOut, clearProps: "all",
-        }    // "+=0.3"
-    );
-  });
-  document.querySelectorAll(".consulting-page__content .anim-up").forEach(function (element, index) {
+  // document.querySelectorAll(".three-page .anim-up").forEach(function (element, index) {
+  //   const side = element.getAttribute('side') || null;
+  //   let tl_FadeInUp = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: element,
+  //       // start: "top bottom",      start: "top bottom",
+  //       markers: false,
+  //     },
+  //   });
+  //   tl_FadeInUp.from(element,
+  //       {
+  //         duration: 1,
+  //         autoAlpha: 0, x: side === 'right' ? 100 : side === 'left' ? -100 : 0,
+  //         ease: Expo.easeOut, clearProps: "all",
+  //       }    // "+=0.3"
+  //   );
+  // });
+  document.querySelectorAll(".three-page__content .anim-up").forEach(function (element, index) {
     let tl_FadeInUp = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -129,7 +127,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-.consulting-page {
+.three-page {
   display: flex;
   align-items: center;
   justify-content: flex-start;

@@ -127,14 +127,14 @@
 
             <!-- services start -->
             <section class='anim-up index-page__services z-0' id='services'>
-                <div class='w-full bg-[#F9F5FF]'>
+                <div class='w-full bg-[#F9F5FF] cards-title'>
                     <div class='max-w-md mx-auto text-center space-y-4 pt-32'>
                         <h2 class='text-[#42307D] text-5xl font-semibold'>Service</h2>
                         <p class='text-[#6941C6] text-lg'>All services what we do</p>
                     </div>
                 </div>
                 <div
-                    class="index-page__cards ">
+                    class="index-page__cards">
                     <div class="2xl:max-w-[90em] max-w-[82em] w-full mx-auto px-4 sm:px-6 lg:px-8">
                         <div class='grid lg:grid-cols-3 grid-cols-1 gap-[32px]'>
                             <div class="flex flex-col bg-white border border-[#EAECF0] rounded-xl shadow-lg"
@@ -277,6 +277,9 @@ $index-page-maxwidth: 1269px;
     font-weight: bold;
     font-size: font-calculate(60px);
 }
+.cards-title{
+    padding-bottom: 30px;
+}
 
 .index-page {
     margin-top: viewport-calculate($notebook_start, $phone, 97px, 50px);
@@ -359,9 +362,14 @@ $index-page-maxwidth: 1269px;
     }
 
     &__cards {
-        background: url('@/assets/images/card-lines.png');
+        background: url('@/assets/images/card-lines.png') 0 -64px;
         background-size: cover;
+        padding-top:viewport-calculate($notebook_start,$phone, 64px, 30px);
+        @media screen and (max-width:1100px) {
+            background:             #F9F5FF;
+            padding-bottom: 30px;
 
+        }
     }
 
     &__trust {
@@ -451,13 +459,13 @@ onMounted(() => {
 
 
 const navs = [
-    {label: 'Главная', path: 'home'},
-    {label: 'О нас', path: 'about'},
-    {label: 'Наши проекты', path: 'projects'},
-    {label: 'Об услугах', path: 'services'},
-    {label: 'Почему мы', path: 'we'},
-    {label: 'Нам доверяют', path: 'trust'},
-    {label: 'Контакты', path: 'contacts'}
+    {label: 'Главная', path: '/home'},
+    {label: 'О нас', path: '/about'},
+    {label: 'Наши проекты', path: '/projects'},
+    {label: 'Об услугах', path: '/services'},
+    {label: 'Почему мы', path: '/we'},
+    {label: 'Нам доверяют', path: '/trust'},
+    {label: 'Контакты', path: '/contacts'}
 ]
 
 const checks = [
@@ -468,7 +476,7 @@ const checks = [
 
 const services = [
     {
-        label: 'Consulting', sublabel: 'Billed annualy.', icon: featuredIconFirst, items: [
+        label: 'Consulting', sublabel: 'Billed annualy.', icon: featuredIconFirst, path:'/consulting', items: [
             {label: 'Access to all basic features'},
             {label: 'Access to all basic features'},
             {label: 'Access to all basic features'},
@@ -477,21 +485,21 @@ const services = [
         ]
     },
     {
-        label: 'Consulting', sublabel: 'Billed annualy.', icon: featuredIconSecond, items: [
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'}
+        label: 'SMM', sublabel: 'Billed annualy.', icon: featuredIconSecond, path:'/smm', items: [
+            {label: '200+ integrations'},
+            {label: 'Advanced reporting and analytics'},
+            {label: 'Up to 20 individual users'},
+            {label: '40GB individual data each user'},
+            {label: 'Priority chat and email support'}
         ]
     },
     {
-        label: 'Consulting', sublabel: 'Billed annualy.', icon: featuredIconThird, items: [
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'},
-            {label: 'Access to all basic features'}
+        label: 'Develope', sublabel: 'Billed annualy.', icon: featuredIconThird,  path:'/develope', items: [
+            {label: 'Advanced custom fields'},
+            {label: 'Audit log and data history'},
+            {label: 'Unlimited individual users'},
+            {label: 'Unlimited individual data'},
+            {label: 'Personalised+priotity service'}
         ]
     }
 ]
