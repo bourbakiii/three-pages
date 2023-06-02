@@ -161,24 +161,24 @@
       <!-- services end -->
 
       <!-- guaranties start -->
-      <section class=' anim-up index-page__guarantees' id='why'>
-        <div class="2xl:max-w-[90em] max-w-[82em] px-4 sm:px-6 lg:px-8 mx-auto">
-          <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="2xl:text-3xl font-bold text-6xl md:leading-tight text-[#42307D]">Our guaranties</h2>
-            <p class="mt-4 text-base text-gray-600 mx-auto max-w-md">Lorem ipsum dolor sit amet, consectetur adipis
-              elit</p>
-          </div>
-          <div class='mt-[54px] grid 2xl:grid-cols-3 gap-[100px] justify-between place-items-center grid-cols-1'>
-            <div class='flex flex-col items-center text-center gap-[22px]' v-for='g in guaranties' :key='g.label'>
-              <div class='gap-[45px] flex flex-col justify-center items-center'>
-                <img :src='g.icon' alt='Icon'/>
-                <p class='text-[21px] font-semibold'>{{ g.label }}</p>
-              </div>
-              <p class='text-gray-600'>{{ g.description }} </p>
-            </div>
-          </div>
-        </div>
-      </section>
+<!--      <section class=' anim-up index-page__guarantees' id='why'>-->
+<!--        <div class="2xl:max-w-[90em] max-w-[82em] px-4 sm:px-6 lg:px-8 mx-auto">-->
+<!--          <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">-->
+<!--            <h2 class="2xl:text-3xl font-bold text-6xl md:leading-tight text-[#42307D]">Our guaranties</h2>-->
+<!--            <p class="mt-4 text-base text-gray-600 mx-auto max-w-md">Lorem ipsum dolor sit amet, consectetur adipis-->
+<!--              elit</p>-->
+<!--          </div>-->
+<!--          <div class='mt-[54px] grid 2xl:grid-cols-3 gap-[100px] justify-between place-items-center grid-cols-1'>-->
+<!--            <div class='flex flex-col items-center text-center gap-[22px]' v-for='g in guaranties' :key='g.label'>-->
+<!--              <div class='gap-[45px] flex flex-col justify-center items-center'>-->
+<!--                <img :src='g.icon' alt='Icon'/>-->
+<!--                <p class='text-[21px] font-semibold'>{{ g.label }}</p>-->
+<!--              </div>-->
+<!--              <p class='text-gray-600'>{{ g.description }} </p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </section>-->
       <!-- guaranties end -->
 
       <!-- trust start -->
@@ -197,13 +197,13 @@
       <!-- trust end -->
 
       <!-- record start -->
-      <section class=' anim-up bg-[#0F172A] relative w-full z-40'>
+      <section class='anim-up bg-[#0F172A] relative w-full z-40'>
         <div class="2xl:max-w-[90em] max-w-[82em] w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div class='flex items-center 2xl:flex-row flex-col place-items-center justify-between'>
             <img class='2xl:h-[700px] 2xl:w-auto 2xl:absolute -top-[60px] w-full z-50' :src='note' alt='Note'/>
             <div class='2xl:relative left-[calc(140px+50%)] max-w-min 2xl:py-20 py-8 w-full 2xl:w-auto text-white'>
               <div class='space-y-[16px]'>
-                <h3 class='text-[36px] font-semibold'>Проконсультироваться</h3>
+                <h3 class='consult-text  font-semibold'>Проконсультироваться</h3>
                 <p class='text-[#94A3B8]'>Clarity gives you the blocks and components you need to create a truly
                   professional website.</p>
               </div>
@@ -250,6 +250,9 @@ $index-page-maxwidth: 1269px;
         flex-direction: column;
 
     }
+}
+.consult-text{
+    font-size: font-calculate(36px);
 }
 
 .index-page {
