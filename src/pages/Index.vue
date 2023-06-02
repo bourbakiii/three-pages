@@ -126,18 +126,18 @@
             <!-- portfolio end -->
 
             <!-- services start -->
-            <section class='anim-up index-page__services z-0' id='services'>
+            <section class='index-page__services z-0' id='services'>
                 <div class='w-full bg-[#F9F5FF] cards-title'>
                     <div class='max-w-md mx-auto text-center space-y-4 pt-32'>
-                        <h2 class='text-[#42307D] text-5xl font-semibold'>Service</h2>
-                        <p class='text-[#6941C6] text-lg'>All services what we do</p>
+                        <h2 class='text-[#42307D] text-5xl font-semibold anim-up '>Service</h2>
+                        <p class='text-[#6941C6] text-lgn anim-up'>All services what we do</p>
                     </div>
                 </div>
                 <div
                     class="index-page__cards">
                     <div class="2xl:max-w-[90em] max-w-[82em] w-full mx-auto px-4 sm:px-6 lg:px-8">
                         <div class='grid lg:grid-cols-3 grid-cols-1 gap-[32px]'>
-                            <div class="flex flex-col bg-white border border-[#EAECF0] rounded-xl shadow-lg"
+                            <div class="flex anim-up z-10  flex-col bg-white border border-[#EAECF0] rounded-xl shadow-lg"
                                  v-for='s in services'
                                  :key='s.label'>
                                 <div class="p-[32px] 2xl:p-10">
@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
                                 <div class="bg-gray-100 border-t rounded-b-xl p-[32px]">
-                                    <router-link  :to="s.path" class='block w-full bg-[#7F56D9] text-white text-center py-[12px] rounded-md text-lg'>Заказать</router-link>
+                                    <router-link  :to="s.path" class='pointer block w-full bg-[#7F56D9] text-white text-center py-[12px] rounded-md text-lg'>Заказать</router-link>
                                 </div>
                             </div>
                         </div>
@@ -313,7 +313,6 @@ $index-page-maxwidth: 1269px;
     &__company-image {
         position: relative;
         width: 100%;
-        height: max-content;
         margin-top: viewport-calculate($notebook_start, $phone, 154px, 100px);
         margin-bottom: viewport-calculate($notebook_start, $phone, 106px, 60px);
 
