@@ -74,7 +74,6 @@ const links = [{
         width: 100%;
         padding: viewport-calculate($notebook_start, $phone, 20px, 10px)  $basic_side_padding 10px;
         background-color: white;
-        background-color: red;
 
         &:hover, &:active, &:focus-within {
 
