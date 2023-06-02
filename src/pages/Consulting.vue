@@ -1,7 +1,7 @@
 <template>
   <main class="page consulting-page">
     <div class="consulting-page__content">
-      <h1 class="consulting-page__title main-title anim-side" side="right">
+      <h1 class="consulting-page__title h1-title anim-side" side="right">
         CONSULTING
       </h1>
       <div class="consulting-page__content content">
@@ -93,7 +93,6 @@ gsap.registerPlugin(ScrollTrigger);
 onMounted(() => {
   document.querySelectorAll(".consulting-page .anim-side").forEach(function (element, index) {
     const side = element.getAttribute('side') || null;
-    console.log('side,', side);
     let tl_FadeInUp = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -135,7 +134,7 @@ onMounted(() => {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 173px;
+  margin: viewport-calculate($notebook_start, $phone, 71px, 55px) auto 0;
   width:100%;
 
   &__content {
@@ -150,7 +149,6 @@ onMounted(() => {
 
   &__title {
     text-transform: uppercase;
-    margin-bottom: 0 auto 114px;
     text-align: center;
   }
 

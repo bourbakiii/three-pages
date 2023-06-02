@@ -29,7 +29,7 @@
                   better tools.</h1>
               </div>
               <div class="mt-3 lg:mt-6 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-                <div class="w-full sm:w-auto flex gap-16">
+                <div class="checks w-full sm:w-auto flex gap-16">
                   <div class='flex items-center gap-4' v-for='c in checks' :key='c.label'>
                     <img :src="checkIcon" alt='Check'/>
                     <p class='font-semibold text-lg'>{{ c.label }}</p>
@@ -243,6 +243,13 @@ $index-page-maxwidth: 1269px;
 .back-image {
   top: 0;
   left: 0;
+}
+.checks{
+    @media screen and (max-width: $phone_start) {
+        gap: 10px;
+        flex-direction: column;
+
+    }
 }
 
 .index-page {

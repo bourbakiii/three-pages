@@ -65,13 +65,7 @@ body {
 @function font-calculate($fontsize, $coefficient: 1.7) {
   @return viewport-calculate($notebook_start, $fontsize, $fontsize, calc($fontsize/$coefficient));
 }
-.main-title {
-  position: absolute;
-  width: 308px;
-  height: 61px;
-  left: calc(50% - 308px / 2 - 8px);
-  top: 276px;
-
+.h1-title {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 600;

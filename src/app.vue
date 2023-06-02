@@ -27,7 +27,6 @@ import Footer from "@/components/Footer.vue";
     position:sticky;
     top:0;
     z-index: 100;
-    margin-top: 32px;
   }
 
 
