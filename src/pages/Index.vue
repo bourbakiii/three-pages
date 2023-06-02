@@ -52,7 +52,7 @@
                         <!-- col end -->
 
                         <!-- col start -->
-                        <div class="lg:basis-1/3 mt-10 lg:mt-0">
+                        <div class="lg:basis-1/3 mt-10 lg:mt-0  main-image-wrapper">
                             <img class='w-full h-auto lg:w-auto' :src=heading alt="Heading"/>
                         </div>
                         <!-- col end -->
@@ -260,7 +260,11 @@ $index-page-maxwidth: 1269px;
     top: 0;
     left: 0;
 }
-
+.main-image-wrapper {
+    @media screen and (max-width: $notebook) {
+        margin: 30px auto 0;
+    }
+}
 .checks {
     @media screen and (max-width: $phone_start) {
         gap: 10px;
