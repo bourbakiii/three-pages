@@ -1,8 +1,8 @@
 <template>
     <div class="navigation-wrapper">
         <nav class="navigation">
+            <router-link class="navigation__logo-wrapper" to="/">
             <icon class="navigation__logo" name="og-nav-logo"/>
-            <router-link class="navigation__logo-wrapper" to="#">
             </router-link>
             <div class="navigation__links-wrapper">
                 <button class="navigation__burger">

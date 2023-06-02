@@ -212,7 +212,7 @@
             <section class='anim-up bg-[#0F172A] relative w-full z-40'>
                 <div class="2xl:max-w-[90em] max-w-[82em] w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <div class='flex items-center 2xl:flex-row flex-col place-items-center justify-between'>
-                        <img class='2xl:h-[700px] 2xl:w-auto 2xl:absolute -top-[60px] w-full z-50' :src='note'
+                        <img class='2xl:h-[700px] 2xl:w-auto 2xl:absolute -top-[60px] w-full max-w-[500px] z-50' :src='note'
                              alt='Note'/>
                         <div
                             class='2xl:relative left-[calc(140px+50%)] max-w-min 2xl:py-20 py-8 w-full 2xl:w-auto text-white'>
