@@ -136,10 +136,11 @@
                 <div
                     class="index-page__cards">
                     <div class="2xl:max-w-[90em] max-w-[82em] w-full mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class='grid lg:grid-cols-3 grid-cols-1 gap-[32px]'>
-                            <div class="flex anim-up z-10  flex-col bg-white border border-[#EAECF0] rounded-xl shadow-lg"
-                                 v-for='s in services'
-                                 :key='s.label'>
+                        <div class='grid lg:grid-cols-3 grid-cols-1 cards-block'>
+                            <div
+                                class="flex anim-up z-10  flex-col bg-white border border-[#EAECF0] rounded-xl shadow-lg card"
+                                v-for='s in services'
+                                :key='s.label'>
                                 <div class="p-[32px] 2xl:p-10">
                                     <div class='flex flex-col items-center'>
                                         <img class='mb-[20px]' :src='s.icon' alt='Icon'/>
@@ -150,15 +151,18 @@
                                             {{ s.sublabel }}
                                         </p>
                                     </div>
-                                    <div class='mt-[32px] flex flex-col gap-[16px]'>
+                                    <div class='card-options mt-[32px] flex flex-col gap-[16px]'>
                                         <div class='flex items-center gap-[12px]' v-for='i in s.items' :key='i.label'>
                                             <img :src='checkIconPrimary' alt='Icon'/>
                                             <p class='text-gray-600 text-base'>{{ i.label }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="bg-gray-100 border-t rounded-b-xl p-[32px]">
-                                    <router-link  :to="s.path" class='pointer block w-full bg-[#7F56D9] text-white text-center py-[12px] rounded-md text-lg'>Заказать</router-link>
+                                <div class="border-t rounded-b-xl p-[32px]">
+                                    <router-link :to="s.path"
+                                                 class='pointer block w-full bg-[#7F56D9] text-white text-center py-[12px] rounded-md text-lg'>
+                                        Заказать
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +216,8 @@
             <section class='anim-up bg-[#0F172A] relative w-full z-40'>
                 <div class="2xl:max-w-[90em] max-w-[82em] w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <div class='flex items-center 2xl:flex-row flex-col place-items-center justify-between'>
-                        <img class='2xl:h-[700px] 2xl:w-auto 2xl:absolute -top-[60px] w-full max-w-[500px] z-50' :src='note'
+                        <img class='2xl:h-[700px] 2xl:w-auto 2xl:absolute -top-[60px] w-full max-w-[500px] z-50'
+                             :src='note'
                              alt='Note'/>
                         <div
                             class='2xl:relative left-[calc(140px+50%)] max-w-min 2xl:py-20 py-8 w-full 2xl:w-auto text-white'>
@@ -260,11 +265,13 @@ $index-page-maxwidth: 1269px;
     top: 0;
     left: 0;
 }
+
 .main-image-wrapper {
     @media screen and (max-width: $notebook) {
         margin: 30px auto 0;
     }
 }
+
 .checks {
     @media screen and (max-width: $phone_start) {
         gap: 10px;
@@ -273,15 +280,28 @@ $index-page-maxwidth: 1269px;
     }
 }
 
+.card {
+    justify-content: space-between;
+}
+
+.cards-block {
+    gap: viewport-calculate($notebook_start, $tablet, 32px, 10px);
+}
+
 .consult-text {
     font-size: font-calculate(36px);
+}
+
+.card-options {
+    flex-grow: 1;
 }
 
 .guaranties-text {
     font-weight: bold;
     font-size: font-calculate(60px);
 }
-.cards-title{
+
+.cards-title {
     padding-bottom: 30px;
 }
 
@@ -292,6 +312,7 @@ $index-page-maxwidth: 1269px;
     display: flex;
     align-items: center;
     justify-content: center;
+
 
     &__content {
         max-width: $index-page-maxwidth;
@@ -313,12 +334,13 @@ $index-page-maxwidth: 1269px;
     &__company-image {
         position: relative;
         width: 100%;
+        height:min-content;
         margin-top: viewport-calculate($notebook_start, $phone, 154px, 100px);
         margin-bottom: viewport-calculate($notebook_start, $phone, 106px, 60px);
 
         img {
+            object-fit: contain;
             width: 100%;
-            height: max-content;
         }
     }
 
@@ -351,9 +373,10 @@ $index-page-maxwidth: 1269px;
         background: url('@/assets/images/portfolio-bg.png') no-repeat center;
         background-size: cover;
         padding: viewport-calculate($notebook_start, $phone, 178px, 100px) 0 viewport-calculate($notebook_start, $phone, 242px, 160px);
-        &-mockup{
+
+        &-mockup {
             position: absolute;
-            right:0;
+            right: 0;
             bottom: calc(viewport-calculate($notebook_start, $phone, 140px, 60px) * -1);
             z-index: -1;
         }
@@ -367,9 +390,9 @@ $index-page-maxwidth: 1269px;
     &__cards {
         background: url('@/assets/images/card-lines.png') 0 -64px;
         background-size: cover;
-        padding-top:viewport-calculate($notebook_start,$phone, 64px, 30px);
-        @media screen and (max-width:1100px) {
-            background:             #F9F5FF;
+        padding-top: viewport-calculate($notebook_start, $phone, 64px, 30px);
+        @media screen and (max-width: 1100px) {
+            background: #F9F5FF;
             padding-bottom: 30px;
 
         }
@@ -479,7 +502,7 @@ const checks = [
 
 const services = [
     {
-        label: 'Consulting', sublabel: 'Billed annualy.', icon: featuredIconFirst, path:'/consulting', items: [
+        label: 'Consulting', sublabel: 'Billed annualy.', icon: featuredIconFirst, path: '/consulting', items: [
             {label: 'Access to all basic features'},
             {label: 'Access to all basic features'},
             {label: 'Access to all basic features'},
@@ -488,7 +511,7 @@ const services = [
         ]
     },
     {
-        label: 'SMM', sublabel: 'Billed annualy.', icon: featuredIconSecond, path:'/smm', items: [
+        label: 'SMM', sublabel: 'Billed annualy.', icon: featuredIconSecond, path: '/smm', items: [
             {label: '200+ integrations'},
             {label: 'Advanced reporting and analytics'},
             {label: 'Up to 20 individual users'},
@@ -497,7 +520,7 @@ const services = [
         ]
     },
     {
-        label: 'Develope', sublabel: 'Billed annualy.', icon: featuredIconThird,  path:'/develope', items: [
+        label: 'Develope', sublabel: 'Billed annualy.', icon: featuredIconThird, path: '/develope', items: [
             {label: 'Advanced custom fields'},
             {label: 'Audit log and data history'},
             {label: 'Unlimited individual users'},
