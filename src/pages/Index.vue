@@ -90,7 +90,7 @@
                 <div class="index-page__company-image">
                     <img src="@/assets/images/team.png" alt="Company image">
                     <div
-                        class='index-page__jenny shadow-md rounded-xl z-30 text-center bg-[rgba(255, 255, 255, 0.85)] backdrop-blur-md rotate-[2.18deg]'>
+                        class='index-page__jenny shadow-md rounded-xl z-30 text-center bg-[rgba(255, 255, 255, 0.85)] backdrop-blur-md '>
                         <p class='text-[#090914] font-semibold text-[14px]'>Jenny Wilson</p>
                         <p class='text-gray-600 text-[12px]'>Co-Founder, CEO</p>
                     </div>

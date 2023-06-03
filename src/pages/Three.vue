@@ -17,7 +17,7 @@
                     </div>
                 </div>
 
-                <div class="cards  anim-up">
+                <div class="cards anim-up">
                     <div class="cards__item card"
                          v-for="item in 3">
                         <div class="card__content">
@@ -125,7 +125,7 @@ onMounted(() => {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .three-page {
     display: flex;
     align-items: center;
